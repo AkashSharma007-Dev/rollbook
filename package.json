@@ -1,0 +1,41 @@
+{
+  "name": "rollbook",
+  "productName": "Rollbook",
+  "version": "1.0.0",
+  "description": "Attendance register and salary for small businesses",
+  "main": "src/main.js",
+  "author": "Akash Sharma",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "test": "node test/pay.test.js && node test/files.test.js",
+    "dist": "electron-builder --win nsis --publish never"
+  },
+  "devDependencies": {
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  },
+  "build": {
+    "appId": "com.akashsharma.rollbook",
+    "productName": "Rollbook",
+    "directories": { "output": "dist", "buildResources": "build" },
+    "files": ["src/**/*", "build/icon.png", "package.json"],
+    "win": {
+      "target": [{ "target": "nsis", "arch": ["x64"] }],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Rollbook",
+      "artifactName": "Rollbook-Setup-${version}.${ext}"
+    }
+  }
+}
